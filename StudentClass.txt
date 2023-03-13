@@ -1,0 +1,125 @@
+//CasetTools Assignment
+//Roll Number 21847
+
+//Task II
+
+//Student class
+package students;
+
+public class Student {
+	
+	private int rollNumber, marksObtained; private String name;
+    public int getRollNumber() {
+		return rollNumber;
+	}
+
+	public void setRollNumber(int rollNumber) {
+		this.rollNumber = rollNumber;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getMarksObtained() {
+		return marksObtained;
+	}
+
+	public void setMarksObtained(int marksObtained) {
+		this.marksObtained = marksObtained;
+	}
+
+	public double calculatePercentage() 
+    {
+        return (marksObtained / 500.0) * 100.0;
+    }
+    
+}
+
+
+
+
+
+//TestStudent Class
+
+//package students;
+
+import static org.junit.Assert.*;
+import org.junit.Test;
+
+public class TestStudent {
+	Student s = new Student();
+	
+	@Test
+	public void testSetRollNumber() {
+		s.setRollNumber(21847);
+		assertEquals(21847,s.getRollNumber());
+	}
+	
+	@Test
+	public void testSetName() {
+		s.setName("Akshay Salate");
+		assertEquals("Akshay Salate",s.getName());
+	}
+	
+	@Test
+	public void testSetMarksObtained() {
+		s.setMarksObtained(450);
+		assertEquals(450,s.getMarksObtained());
+	}
+	
+	@Test
+    public void testGetRollNumber() {
+        s.setRollNumber(21847);
+        assertEquals(21847, s.getRollNumber());
+    }
+
+	@Test
+    public void testGetName() {
+        s.setName("Akshay Salate");
+        assertEquals("Akshay Salate", s.getName());
+    }
+	
+	@Test
+    public void testGetMaksObtained() {
+        s.setMarksObtained(450);
+        assertEquals(450, s.getMarksObtained());
+    }
+
+    @Test
+    public void testCalculatePercentage() {
+    	s.setMarksObtained(450);
+        assertEquals(90.0, s.calculatePercentage(), 0.001);
+    }
+
+}
+
+
+
+
+
+
+//TestRunnerStudent class
+
+package students;
+
+import org.junit.runner.JUnitCore;
+import org.junit.runner.Result;
+import org.junit.runner.notification.Failure;
+
+public class TestRunnerStudent {
+
+	public static void main(String args[]) {
+		Result result = JUnitCore.runClasses(TestStudent.class);
+				
+		for(Failure failure : result.getFailures()) {
+			System.out.println(failure.toString());
+		}
+		
+		System.out.println(result.wasSuccessful());
+	}
+}
